@@ -1,14 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .todo_list_done {
+            text-decoration: line-through;
+        }
+
+        div {
+            margin: 10px 10px;
+        }
+    </style>
     <title>Document</title>
 </head>
+
 <body>
-    
-    
+    <div id="user_input_div">
+        <label for="user_name_input">What's your name?</label>
+        <input type="text" id="user_name_input">
+        <button onClick="log_in()">Aceptar</button>
+    </div>
+
+    <br>
+
+    <div id="session_input_div" style="display: none;">
+        <label for="session_time">How long will your session be?</label>
+        <input type="number" id="session_time">
+        <button onClick="set_session_time()">Aceptar</button>
+    </div>
+
+    <div id="current_session" style="display: none;">
+
+        <!-- general session status - Has name and time -->
+        <div id="general_session_status">
+            <p id="user_greet">
+                Hello user, your current session time is
+            </p>
+        </div>
+
+        <!-- note taking -->
+        <div id="note_module">
+            <h1>Take all the notes you need!</h1>
+            <textarea name="note_area" id="note_area_input" cols="30" rows="10">What's on your mind?
+            </textarea>
+        </div>
+
+        <!-- to do -->
+        <div id="to_do_module">
+            <h1>To do list</h1>
+            <ul id = 'todo_list_list'>
+                <li class="todo_list_item">Write html</li>
+                <li class="todo_list_item">Write css</li>
+                <li class="todo_list_item">Adjust css</li>
+                <li class="todo_list_item">Deploy on github</li>
+            </ul>
+            <label for="new_todo">Add new to do</label>
+            <input type="text" id="new_todo">
+            <button onClick="new_todo()">Add new todo list</button>
+            <br>
+            <button onClick="mark_all()">All complete</button>
+        </div>
+
+        <!-- calculadora -->
+        <div id="calculator_module">
+            <h1>Calculator!</h1>
+            <label for="first_number">First number</label>
+            <br>
+            <input type="text" id="first_number">
+            <br>
+            <label for="second_number">Second number (To substract, divide or exponentiate)</label>
+            <br>
+            <input type="text" id="second_number">
+            <br>
+            <p>Resultado: <span id="result"></span></p>
+            <br>
+            <button onClick="addition()">+</button>
+            <button onClick="substraction()">-</button>
+            <button onClick="multiplication()">*</button>
+            <button onClick="division()">/</button>
+            <button onClick="exponentiation()">X^x</button>
+        </div>
+
+    </div>
     <script src="scripts.js"></script>
 </body>
+
 </html>
