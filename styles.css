@@ -1,0 +1,46 @@
+/* variables */
+:root {
+    
+    --text_color: #666060;
+    --green_accept:#06EA7A;
+    --red_deny:#EB2207;
+    --main_cyan:#05E4F7;
+
+}
+
+
+button {
+    padding: 8px;
+    background-color: white;
+    border: 2px solid var(--green_accept);
+    border-radius: 30px;
+}
+
+/* functional classes */
+.todo_list_done {
+    text-decoration: line-through;
+}
+
+
+/* style classes */
+
+.main_container  {
+    display:flex;
+    justify-content: center;
+    border: 2px solid var(--main_cyan);
+    border-radius: 10px;
+
+}
+
+.module {
+    border: 2px solid var(--main_cyan);
+    border-radius: 10px;
+
+}
+
+
+div {
+    margin: 10px 10px;
+    padding:10px;
+}
+
