@@ -14,6 +14,13 @@ let session = {
     status: 'active'
 };
 
+// weather
+let ubicacion;
+let lat;
+let long;
+let respuesta_limpia;
+let apikey = "52dda323b71c0e00cb51f86c5aedc570";
+
 
 // calculator
 
@@ -40,7 +47,7 @@ let user_input_button = document.getElementById('button_log_in');
 
 // session data 
 let session_time = document.getElementById('session_time');
-let session_input_button = document.getElementById('button_set_session_time')
+
 
 // current session div
 // User greet P
@@ -50,7 +57,6 @@ let user_greet_p = document.getElementById('user_greet');
 
 
 let session_toast = Toastify({
-    
     text: `Session started ${user.name}`,
     position: "left",
 })
@@ -67,12 +73,16 @@ let mark_all_button = document.getElementById('button_mark_all');
 // functions
 // user logs in and login div hides, time input appears
 function log_in() {
-    if (user_name_input.value === '') {
+    if (user_name_input.value === '' || session_time.value === '') {
         alert('You should write something!')
     } else {
         user.name = user_name_input.value;
         user_input_div.style.display = 'none';
-        session_input_div.style.display = 'block';
+        session.time = session_time.value;
+        current_session_div.style.display = 'block';
+        user_greet_p.innerText = `Hello ${user.name}, your current session time is ${session.time}.`
+
+        session_toast.showToast();
     }
 
 
@@ -80,24 +90,8 @@ function log_in() {
 ;
 
 user_input_button.addEventListener('click', log_in);
-
-// user inputs time, time input hides, current session div appears
-function set_session_time() {
-    let {name }= user; // object deconstruction
-    if (session_time.value === '') {
-        alert('You should write something!')
-    } else {
-        session.time = session_time.value;
-        session_input_div.style.display = 'none';
-        current_session_div.style.display = 'block';
-        user_greet_p.innerText = `Hello ${name}, your current session time is ${session.time}.`
-
-        session_toast.showToast()
-    }
-}
 ;
 
-session_input_button.addEventListener('click', set_session_time);
 
 
 // To do module
@@ -207,9 +201,42 @@ function exponentiation(first_number, second_number) {
     }
 };
 
-
 addition_button.addEventListener('click',addition);
 substraction_button.addEventListener('click',substraction);
 multiplication_button.addEventListener('click',multiplication);
 division_button.addEventListener('click',division);
 exponentiation_button.addEventListener('click',exponentiation);
+
+// weather
+
+function mostrarPosicion(posicion) {
+    ubicacion = posicion;
+    lat = posicion.coords.latitude;
+    long = posicion.coords.longitude;
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apikey}&units=metric`)
+        .then(response => response.json())
+        .then(data => respuesta_limpia = data)
+        .then(function () {
+            let div = document.getElementById('weather');
+
+            let new_node = document.createElement('h1');
+
+            new_node.innerText = `Temperature: ${respuesta_limpia.main.temp}
+                                Humidity: ${respuesta_limpia.main.humidity}
+                                Weather: ${respuesta_limpia.weather[0].description}                     
+                    `
+                ;
+
+            div.append(new_node)
+
+                ;
+        }
+
+        )
+
+
+
+};
+navigator.geolocation.getCurrentPosition(mostrarPosicion);
+
+

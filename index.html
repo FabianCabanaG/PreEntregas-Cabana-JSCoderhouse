@@ -13,26 +13,28 @@
 <body>
     <div class="main_container">
         <div id="user_input_div">
-            <label for="user_name_input">What's your name?</label>
-            <input type="text" id="user_name_input">
-            <button id="button_log_in">Aceptar</button>
-        </div>
-
-        <br>
-
-        <div id="session_input_div" style="display: none;">
-            <label for="session_time">How long will your session be?</label>
-            <input type="number" id="session_time">
-            <button id="button_set_session_time">Aceptar</button>
+            <div>
+                <label for="user_name_input">What's your name?</label>
+                <input type="text" id="user_name_input">
+            </div>
+            <div>
+                <label for="session_time">How long will your session be?</label>
+                <input type="number" id="session_time">
+            </div>
+            <div>
+                <button id="button_log_in">Aceptar</button>
+            </div>
         </div>
 
         <div id="current_session" style="display: none;">
-
             <!-- general session status - Has name and time -->
             <div id="general_session_status" class="module">
                 <p id="user_greet">
                     Hello user, your current session time is
                 </p>
+            </div>
+            <div id="weather" class="module">
+
             </div>
 
             <!-- note taking -->
@@ -53,8 +55,8 @@
                 </ul>
                 <label for="new_todo">Add new to do</label>
                 <input type="text" id="new_todo">
-                <button id= 'button_new_todo'>Add new todo list</button>
-                <button id="button_mark_all" >All complete</button>
+                <button id='button_new_todo'>Add new todo list</button>
+                <button id="button_mark_all">All complete</button>
             </div>
 
             <!-- calculadora -->
@@ -70,11 +72,11 @@
                 <br>
                 <p>Resultado: <span id="result"></span></p>
                 <br>
-                <button id="button_addition" >+</button>
+                <button id="button_addition">+</button>
                 <button id="button_substraction" o>-</button>
-                <button id="button_multiplication" >*</button>
-                <button id="button_division" >/</button>
-                <button id="button_exponentiation" >X^x</button>
+                <button id="button_multiplication">*</button>
+                <button id="button_division">/</button>
+                <button id="button_exponentiation">X^x</button>
             </div>
 
         </div>
